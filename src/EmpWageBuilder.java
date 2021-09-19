@@ -1,16 +1,12 @@
-
 public class EmpWageBuilder {
     public static final int IS_FULL_TIME = 1;
     public static final int IS_PART_TIME = 2;
-    public static final int EMP_RATE_PER_HR = 20;
-    public static final int NUM_OF_WORKING_DAYS = 30;
-    public static final int MAX_HRS_IN_MONTH = 10;
 
-    public static void employeeWage() {
+    public static void employeeWage(String companyName, int empRatePerHr, int noOfWorkingDays, int maxHrsPerMonth) {
         int empHrs = 0;
         int totalEmpHrs = 0;
         int totalWorkingDays = 0;
-        while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
+        while (totalEmpHrs <= maxHrsPerMonth && totalWorkingDays < noOfWorkingDays) {
             totalWorkingDays++;
             double empCheck = (Math.floor(Math.random() * 10) % 3);
             if (empCheck == IS_FULL_TIME)
@@ -23,11 +19,12 @@ public class EmpWageBuilder {
             totalEmpHrs += empHrs;
             System.out.println("Day: " + totalWorkingDays + "Emp Hr:" + empHrs);
         }
-        int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HR;
-        System.out.println("Total Emp Wage is " + totalEmpWage);
+        int totalEmpWage = totalEmpHrs * empRatePerHr;
+        System.out.println("Total Emp Wage for company " + companyName + " is " + totalEmpWage);
     }
 
     public static void main(String[] args) {
-        employeeWage();
+        employeeWage("Dmart", 20, 6, 10);
+        employeeWage("JIO", 27, 16, 20);
     }
 }
